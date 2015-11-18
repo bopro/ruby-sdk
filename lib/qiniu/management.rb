@@ -83,8 +83,7 @@ module Qiniu
         end # delete
 
         def fetch(bucket, key, uri)
-          urlsafe_uri = Utils.urlsafe_base64_encode(uri)
-          url = Config.settings[:rs_host] + '/fetch/' + urlsafe_uri + '/to/' + encode_entry_uri(bucket, key)
+          url = Config.settings[:rs_host] + '/fetch/' + urlsafe_base64_encode(uri) + '/to/' + encode_entry_uri(bucket, key)
           return HTTP.management_post(url)
         end # fetch
 
